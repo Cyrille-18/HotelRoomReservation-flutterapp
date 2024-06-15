@@ -7,11 +7,6 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
-analyzer:
-  errors:
-    avoid_unnecessary_containers: ignore
-    no_logic_in_create_state: ignore
-    use_super_parameters: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
