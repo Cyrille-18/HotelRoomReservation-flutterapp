@@ -1,24 +1,20 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/utils/global.colors.dart';
+import 'package:hotelroomreservation/view/login.view.dart';
 import 'package:hotelroomreservation/widgets/button.global.dart';
 import 'package:hotelroomreservation/widgets/social.login.dart';
 import 'package:hotelroomreservation/widgets/text.form.global.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
-
+class SignupView extends StatefulWidget {
+  const SignupView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignupView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-
+class _LoginViewState extends State<SignupView> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Logo',
+                    'Hôtel Transilvani',
                     style: TextStyle(
                       color: GlobalColors.maincolor,
                       fontSize: 35,
@@ -47,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(height: 15),
                 Text(
-                  'Enter your login account',
+                  'Register now',
                   style: TextStyle(
                     color: GlobalColors.textColor,
                     fontSize: 16,
@@ -57,26 +53,25 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 15,
                 ),
-                 TextFromGlobal(
+                TextFromGlobal(
                     controller: emailController,
-                    text: 'Email',
+                    text: 'Enter your email',
                     obscure: false,
                     textInputType: TextInputType.emailAddress),
                 const SizedBox(
                   height: 10,
                 ),
-                TextFromGlobal(
+                PassFromGlobal(
                   controller: passwordController,
-                  text: 'Password',
+                  text: 'Enter your password',
                   textInputType: TextInputType.text,
-                  obscure: true,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const ButtonGlobal(),
                 const SizedBox(
                   height: 25,
+                ),
+                const Buttonregister(),
+                const SizedBox(
+                  height: 375,
                 ),
                 const SocialLogin(),
               ],
@@ -91,10 +86,16 @@ class _LoginViewState extends State<LoginView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Dont\'t have an account ?'),
+            const Text('Did you have an account ?'),
             InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginView()),
+                );
+              },
               child: Text(
-                'Singn up',
+                'Sign in',
                 style: TextStyle(
                   color: GlobalColors.maincolor,
                 ),

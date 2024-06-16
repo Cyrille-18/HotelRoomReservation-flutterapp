@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/utils/global.colors.dart';
+import 'package:hotelroomreservation/view/signup.view.dart';
 import 'package:hotelroomreservation/widgets/button.global.dart';
 import 'package:hotelroomreservation/widgets/social.login.dart';
 import 'package:hotelroomreservation/widgets/text.form.global.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -32,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Logo',
+                    'Hôtel Transilvani',
                     style: TextStyle(
                       color: GlobalColors.maincolor,
                       fontSize: 35,
@@ -60,11 +61,10 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFromGlobal(
+                PassFromGlobal(
                   controller: passwordController,
                   text: 'Password',
                   textInputType: TextInputType.text,
-                  obscure: true,
                 ),
                 const SizedBox(
                   height: 10,
@@ -88,6 +88,12 @@ class _LoginViewState extends State<LoginView> {
           children: [
             const Text('Dont\'t have an account ?'),
             InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignupView()),
+                );
+              },
               child: Text(
                 'Sign up',
                 style: TextStyle(
