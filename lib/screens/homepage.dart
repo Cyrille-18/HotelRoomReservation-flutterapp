@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:flutter_svg/svg.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/painting.dart';
@@ -11,6 +11,7 @@ import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/room_details_screen.dart';
 
+import '../view/navigationbar.dart';
 import '../widgets/room_card.dart';
 
 class Homepage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _HomepageState extends State<Homepage> {
             Container(
               //color: Color.fromRGBO(201, 236, 243, 1),
               padding: EdgeInsets.fromLTRB(10, 25, 10, 10),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     children: <Widget>[
@@ -82,64 +83,120 @@ class _HomepageState extends State<Homepage> {
                   SizedBox(
                     height: 8,
                   ),
+                  Stack(
+                    children: <Widget>[RoomCard()],
+                  ),
+                  Stack(
+                    children: <Widget>[RoomCard()],
+                  )
                 ],
               ),
             ),
-            //creation des chambres 
-            ListView.builder(
-              itemCount: Rooms.length,
-              itemBuilder: (Context, index)=>room_card(itemIndex: index, room: Rooms[index], press: (){
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailRoom(
-                            // Room: Rooms[index],
-                            
-                          ),
-                        ),
-                      );
-              })),
-
             SizedBox(
               height: 15,
             ),
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-          child: GNav(
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: Colors.white,
-            tabBackgroundColor: Color.fromARGB(255, 29, 31, 30),
-            gap: 8,
-            onTabChange: (index) {
-              print(index);
-            },
-            padding: EdgeInsets.all(16),
-            tabs: const [
-              GButton(
-                icon: Icons.home,
-                text: 'Acceuil',
+      bottomNavigationBar: navigationbar(),
+    );
+  }
+}
+
+class RoomCard extends StatelessWidget {
+  const RoomCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: kDefaultPadding,
+        vertical: kDefaultPadding / 2,
+      ),
+      // color: Colors.blueAccent,
+      height: 160,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          //arriere-plan
+          Container(
+            height: 135,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(22),
+              color: kBlueColor,
+              boxShadow: [kDefaultShadow],
+            ),
+            child: Container(
+              margin: EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(22),
               ),
-              GButton(
-                icon: Icons.favorite_border,
-                text: 'Favoris',
-              ),
-              GButton(
-                icon: Icons.search,
-                text: 'Cherhcher',
-              ),
-              GButton(
-                icon: Icons.settings,
-                text: 'Paramètres',
-              ),
-            ],
+            ),
           ),
-        ),
+          // image de la chambre
+          Positioned(
+              top: 25,
+              right: 0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(22),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  height: 135,
+                  width: 230,
+                  child: Image.asset(
+                    "assets/images/chbre6.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )),
+          //Nom et Description de la chambre
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: SizedBox(
+              height: 136,
+              width: size.width - 200,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Spacer(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: Text(
+                      "Chambre luxieuse Parisienne",
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: kDefaultPadding * 1.5, //30 padding
+                      vertical: kDefaultPadding / 4, // 5 en haut 5 en bas
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(22),
+                          topRight: Radius.circular(22)),
+                    ),
+                    child: Text(
+                      "58000 \FCFA",
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(color: Colors.white),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

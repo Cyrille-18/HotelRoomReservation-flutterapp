@@ -7,7 +7,7 @@ class Room {
 
 // liste de chambre pour la demo
 // pour la demo
-List<Room> Rooms = [
+List<Room> rooms = [
   Room(
     id: 1,
     price: 35000,
