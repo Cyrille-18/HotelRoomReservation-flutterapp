@@ -1,11 +1,13 @@
 import 'dart:ui';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/painting.dart';
+// import 'package:flutter/rendering.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hotelroomreservation/constantes.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -19,10 +21,12 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+      
         title: const Text(
           'Hôtel Transilvani',
         ),
-        backgroundColor: Color.fromARGB(19, 17, 2, 2),
+        backgroundColor: kPrimaryColor,// Color.fromARGB(19, 17, 2, 2),
         centerTitle: true,
         actions: const [
           IconButton(

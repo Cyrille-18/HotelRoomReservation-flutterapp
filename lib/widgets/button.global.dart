@@ -16,8 +16,9 @@ class ButtonGlobal extends StatelessWidget {
           Expanded(
               child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: WidgetStateColor.resolveWith(
-                          (states) => Colors.blue)),
+                      // backgroundColor: WidgetStateColor.resolveWith(
+                      //     (states) => Colors.blue)
+                      ),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -73,8 +74,9 @@ class Buttonregister extends StatelessWidget {
           Expanded(
               child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: WidgetStateColor.resolveWith(
-                          (states) => Colors.blue)),
+                      // backgroundColor: WidgetStateColor.resolveWith(
+                      //     (states) => Colors.blue)
+                      ),
                   onPressed: () {
                     Navigator.push(
                       context,
