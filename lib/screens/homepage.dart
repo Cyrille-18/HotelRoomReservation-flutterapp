@@ -21,22 +21,23 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-      
-        title: const Text(
-          'Hôtel Transilvani',
-        ),
-        backgroundColor: kPrimaryColor,// Color.fromARGB(19, 17, 2, 2),
-        centerTitle: true,
-        actions: const [
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.place),
-            color: Color.fromARGB(255, 172, 193, 204),
-            iconSize: 35,
-          )
-        ],
-      ),
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            'Hôtel Transilvani',
+          ),
+          backgroundColor: kPrimaryColor, // Color.fromARGB(19, 17, 2, 2),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications_outlined),
+              color: Colors.white,
+              iconSize: 25,
+            )
+          ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,29 +54,39 @@ class _HomepageState extends State<Homepage> {
                           child: Material(
                             child: TextField(
                               decoration: InputDecoration(
-                                  hintText: 'search',
+                                  prefixIcon: Icon(
+                                    Icons.search,
+                                    color: Colors.black26,
+                                  ),
+                                  hintText: 'Rechercher',
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12.0)),
+                                      borderSide:
+                                          BorderSide(color: kPrimaryColor)),
                                   border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12.0)),
+                                    borderSide: BorderSide(color: Colors.black),
                                   )),
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xFF144DCA),
-                          child: IconButton(
-                            icon: Icon(Icons.search, color: Colors.white),
-                            onPressed: null,
-                          ),
-                        ),
-                      )
+                      // Padding(
+                      //   padding: EdgeInsets.all(8.0),
+                      //   child: CircleAvatar(
+                      //     backgroundColor: Color(0xFF144DCA),
+                      //     child: IconButton(
+                      //       icon: Icon(Icons.search, color: Colors.white),
+                      //       onPressed: null,
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                 ],
               ),
