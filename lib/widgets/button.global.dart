@@ -20,9 +20,10 @@ class ButtonGlobal extends StatelessWidget {
                       //     (states) => Colors.blue)
                       ),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => const Homepage()),
+                      (route) => false,
                     );
                   },
                   child: const Padding(
@@ -78,9 +79,10 @@ class Buttonregister extends StatelessWidget {
                       //     (states) => Colors.blue)
                       ),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => const Homepage()),
+                      (route) => false,
                     );
                   },
                   child: const Padding(

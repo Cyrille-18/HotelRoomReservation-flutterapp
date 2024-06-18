@@ -89,9 +89,10 @@ class _LoginViewState extends State<LoginView> {
             const Text('Dont\'t have an account ?'),
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => const SignupView()),
+                  (route) => false,
                 );
               },
               child: Text(
