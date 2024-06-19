@@ -29,7 +29,7 @@ class App extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home: SplashView(),
     );
   }
 }
