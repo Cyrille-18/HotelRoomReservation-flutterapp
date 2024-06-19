@@ -81,7 +81,7 @@ class _PassFromGlobalState extends State<PassFromGlobal> {
         obscureText: isobscure,
         obscuringCharacter: "*",
         decoration: InputDecoration(
-            hintText: 'Password',
+            hintText: 'Mot de Passe',
             border: const OutlineInputBorder(
               borderSide: BorderSide.none,
             ),

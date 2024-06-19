@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:hotelroomreservation/Provider/provider.dart';
+import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/profile/cubit/settings_cubit.dart';
 import 'package:hotelroomreservation/profile/widgets/app_info_widget.dart';
 import 'package:hotelroomreservation/profile/widgets/help_and_support_widget.dart';
@@ -15,15 +16,14 @@ import 'package:hotelroomreservation/view/my_list_title.dart';
 import 'package:provider/provider.dart';
 
 class StettingsPage extends StatelessWidget {
-  /*final void Function()? onProfileTap;
-  final void Function()? onSignOut;*/
   const StettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Settings"),
+        title: const Text("Paramètres"),
+        backgroundColor: kPrimaryColor,
       ),
       body:
           Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
@@ -39,7 +39,7 @@ class StettingsPage extends StatelessWidget {
               ),
               MyListTitle(
                 icon: Icons.info_sharp,
-                text: 'information du profil',
+                text: 'informations du profil',
                 onTap: () {
                   Navigator.push(
                     context,
@@ -49,13 +49,13 @@ class StettingsPage extends StatelessWidget {
                 },
               ),
               const ListTile(
-                title: Text('Profile preferences'),
-                subtitle: Text('Configure your profile preferences'),
+                title: Text(' Preferences'),
+                subtitle: Text('Configurer vos péférences de profil'),
                 trailing: Icon(Icons.chevron_right),
               ),
               ListTile(
-                title: const Text('Help and Support'),
-                subtitle: const Text('Get help and support'),
+                title: const Text('Aide et Support'),
+                subtitle: const Text('Obtenez de l\'aide'),
                 onTap: () {
                   showModalBottomSheet<void>(
                     context: context,
@@ -67,8 +67,8 @@ class StettingsPage extends StatelessWidget {
                 trailing: const Icon(Icons.help),
               ),
               ListTile(
-                title: const Text('App info'),
-                subtitle: const Text('Info and credits'),
+                title: const Text('A propos'),
+                subtitle: const Text('Informations et dédicaces'),
                 onTap: () {
                   showModalBottomSheet<void>(
                     context: context,
@@ -80,8 +80,9 @@ class StettingsPage extends StatelessWidget {
                 trailing: const Icon(Icons.info),
               ),
               ListTile(
-                title: const Text('Privacy Settings'),
-                subtitle: const Text('Consult privacy policies'),
+                title: const Text('Paramètres de confidentialité'),
+                subtitle:
+                    const Text('Consulter la politique de confidentialité'),
                 onTap: () {
                   // TODO(profile): Navigate to privacy settings screen
                 },
@@ -89,7 +90,7 @@ class StettingsPage extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.dark_mode),
-                title: const Text("Dark theme"),
+                title: const Text("Thème Sombre"),
                 trailing: Switch(
                     value: notifier.isDark,
                     onChanged: (value) => notifier.changeTheme()),
@@ -99,7 +100,7 @@ class StettingsPage extends StatelessWidget {
               ),
               MyListTitle(
                 icon: Icons.logout,
-                text: 'logout',
+                text: 'Déconnexion',
                 onTap: () {
                   Navigator.push(
                     context,

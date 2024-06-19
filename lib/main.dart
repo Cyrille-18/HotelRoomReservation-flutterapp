@@ -5,6 +5,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/reservationclass.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
+import 'package:hotelroomreservation/screens/settings.page.dart';
 import 'package:hotelroomreservation/view/signup.view.dart';
 import 'package:hotelroomreservation/view/splash.view.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,8 @@ class App extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Hotel Transilvani',
             theme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
+            darkTheme:
+                notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
             home: const SplashView(),
           );
         },

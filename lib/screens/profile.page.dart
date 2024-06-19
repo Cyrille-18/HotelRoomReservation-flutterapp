@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 10,
           ),
           const Text(
-            'username@gmail.com',
+            'adressemail@gmail.com',
             textAlign: TextAlign.center,
             style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
           ),
@@ -47,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 25,
           ),
           MyTextBox(
-            text: 'Owner',
+            text: 'Propriétaire',
             sectionName: 'Nom d\'utilisateur',
             onPressed: () {
               editField('Nom d\'utilisateur');

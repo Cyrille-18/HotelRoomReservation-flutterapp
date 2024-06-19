@@ -47,7 +47,7 @@ class _DisplayState extends State<Display> {
           )
         ],
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -64,7 +64,7 @@ class _DisplayState extends State<Display> {
                   Text(
                     'Cliquez pour entrer votre budget ',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      // color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
