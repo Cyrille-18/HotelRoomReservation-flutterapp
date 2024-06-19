@@ -120,7 +120,7 @@ class _DisplayState extends State<Display> {
                 Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Text(
-                    "Chambre selon votre budgets",
+                    "ChambreS selon votre budgets :",
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
