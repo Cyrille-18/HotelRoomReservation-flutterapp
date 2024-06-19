@@ -11,7 +11,7 @@ class SocialLogin extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: const Text(
-            '-Or sign up with-',
+            'Se Connecter Avec',
             style: TextStyle(
               color: Color.fromARGB(255, 5, 60, 241),
               fontWeight: FontWeight.w600,

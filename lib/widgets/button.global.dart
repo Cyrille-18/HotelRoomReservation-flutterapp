@@ -16,9 +16,12 @@ class ButtonGlobal extends StatelessWidget {
           Expanded(
               child: ElevatedButton(
                   style: ButtonStyle(
-                      // backgroundColor: WidgetStateColor.resolveWith(
-                      //     (states) => Colors.blue)
-                      ),
+                    backgroundColor: MaterialStateColor.resolveWith(
+                      (states) => states.contains(MaterialState.disabled)
+                          ? Colors.grey
+                          : Colors.blue,
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
@@ -35,27 +38,6 @@ class ButtonGlobal extends StatelessWidget {
                   ))),
         ],
       ),
-
-      /*child: Container(
-        alignment: Alignment.center,
-        height: 55,
-        decoration: BoxDecoration(
-            color: GlobalColors.maincolor,
-            borderRadius: BorderRadius.circular(6),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-              )
-            ]),
-        child: const Text(
-          'sign in',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),*/
     );
   }
 }
@@ -68,16 +50,19 @@ class Buttonregister extends StatelessWidget {
     return InkWell(
       onTap: () {
         // ignore: avoid_print
-        print('login');
+        print('Connexion');
       },
       child: Row(
         children: [
           Expanded(
               child: ElevatedButton(
                   style: ButtonStyle(
-                      // backgroundColor: WidgetStateColor.resolveWith(
-                      //     (states) => Colors.blue)
-                      ),
+                    backgroundColor: MaterialStateColor.resolveWith(
+                      (states) => states.contains(MaterialState.disabled)
+                          ? Colors.grey
+                          : Colors.blue,
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
@@ -94,27 +79,6 @@ class Buttonregister extends StatelessWidget {
                   ))),
         ],
       ),
-
-      /*child: Container(
-        alignment: Alignment.center,
-        height: 55,
-        decoration: BoxDecoration(
-            color: GlobalColors.maincolor,
-            borderRadius: BorderRadius.circular(6),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-              )
-            ]),
-        child: const Text(
-          'sign in',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),*/
     );
   }
 }

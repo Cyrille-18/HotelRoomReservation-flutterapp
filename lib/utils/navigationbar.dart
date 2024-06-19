@@ -5,6 +5,7 @@ import 'package:hotelroomreservation/models/reservationclass.dart';
 import 'package:hotelroomreservation/screens/budgets_screen.dart';
 import 'package:hotelroomreservation/screens/myreservation_screen.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
+import 'package:hotelroomreservation/screens/settings.page.dart';
 
 class barredenavigation extends StatefulWidget {
   final int selectedIndex;
@@ -56,6 +57,13 @@ class _barredenavigationState extends State<barredenavigation> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const Display()),
+          (route) => false,
+        );
+        break;
+      case 3:
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const StettingsPage()),
           (route) => false,
         );
         break;

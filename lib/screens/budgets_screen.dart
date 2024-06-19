@@ -47,7 +47,7 @@ class _DisplayState extends State<Display> {
           )
         ],
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -64,7 +64,7 @@ class _DisplayState extends State<Display> {
                   Text(
                     'Cliquez pour entrer votre budget ',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      // color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -103,7 +103,7 @@ class _DisplayState extends State<Display> {
                     const SizedBox(height: 10.0),
                     Text(
                       // ignore: prefer_interpolation_to_compose_strings
-                      _balance + " fcfa",
+                      _balance + " FCFA",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30.0,
@@ -120,7 +120,7 @@ class _DisplayState extends State<Display> {
                 Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Text(
-                    "ChambreS selon votre budgets :",
+                    "Chambres selon votre budgets :",
                     style: TextStyle(fontSize: 20),
                   ),
                 ),

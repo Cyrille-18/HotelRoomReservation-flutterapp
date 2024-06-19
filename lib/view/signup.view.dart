@@ -70,7 +70,7 @@ class _LoginViewState extends State<SignupView> {
                 ),
                 TextFromGlobal(
                     controller: emailController,
-                    text: 'Enter your email',
+                    text: 'Entrer votre email',
                     obscure: false,
                     textInputType: TextInputType.emailAddress),
                 const SizedBox(
@@ -101,7 +101,7 @@ class _LoginViewState extends State<SignupView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Did you have an account ?'),
+            const Text('vous avez un compte ?'),
             InkWell(
               onTap: () {
                 Navigator.pushAndRemoveUntil(
@@ -111,7 +111,7 @@ class _LoginViewState extends State<SignupView> {
                 );
               },
               child: Text(
-                'Sign in',
+                'Se Connecter',
                 style: TextStyle(
                   color: GlobalColors.maincolor,
                 ),

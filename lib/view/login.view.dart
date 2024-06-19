@@ -42,20 +42,6 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 const SizedBox(height: 100),
-                /*Text(
-                  'Enter your login account',
-                  style: TextStyle(
-                    color: GlobalColors.textColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),*/
-                /*const Center(
-                  child: Icon(
-                    Icons.person,
-                    size: 72,
-                  ),
-                ),*/
                 const Center(
                   child: CircleAvatar(
                     radius: 50, // Ajuste le rayon selon les besoins
@@ -104,7 +90,7 @@ class _LoginViewState extends State<LoginView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Dont\'t have an account ?'),
+            const Text('vous n\'avez pas de compte ?'),
             InkWell(
               onTap: () {
                 Navigator.pushAndRemoveUntil(
@@ -114,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
                 );
               },
               child: Text(
-                'Sign up',
+                "S'inscrire",
                 style: TextStyle(
                   color: GlobalColors.maincolor,
                 ),
