@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotelroomreservation/view/splash.view.dart';
+import 'package:hotelroomreservation/view/signup.view.dart';
 import 'package:provider/provider.dart';
 
 import 'Provider/provider.dart';
@@ -27,7 +27,7 @@ class App extends StatelessWidget {
           // when your mobile theme is dark the app also become dark
 
           themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
-
+        
           //Our custom theme applied
           darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
 
@@ -35,8 +35,8 @@ class App extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          /*home: const StettingsPage(),*/
-          home: const SplashView(),
+          home: const SignupView(),
+          /* home: const SplashView(),*/
         );
       }),
     );

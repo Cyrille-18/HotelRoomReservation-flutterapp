@@ -42,12 +42,27 @@ class _LoginViewState extends State<SignupView> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Text(
+                /*Text(
                   'Register now',
                   style: TextStyle(
                     color: GlobalColors.textColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
+                  ),
+                ),*/
+                const SizedBox(
+                  height: 100,
+                ),
+                const Center(
+                  child: CircleAvatar(
+                    radius: 50, // Ajuste le rayon selon les besoins
+                    backgroundColor:
+                        Colors.black, // La couleur de fond du cercle
+                    child: Icon(
+                      Icons.lock,
+                      size: 72, // La taille de l'icône à l'intérieur
+                      color: Colors.white, // La couleur de l'icône
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -63,7 +78,7 @@ class _LoginViewState extends State<SignupView> {
                 ),
                 PassFromGlobal(
                   controller: passwordController,
-                  text: 'Enter your password',
+                  text: 'Mot de passe',
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(
@@ -71,7 +86,7 @@ class _LoginViewState extends State<SignupView> {
                 ),
                 const Buttonregister(),
                 const SizedBox(
-                  height: 375,
+                  height: 35,
                 ),
                 const SocialLogin(),
               ],

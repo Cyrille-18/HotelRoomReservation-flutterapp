@@ -27,7 +27,7 @@ class ButtonGlobal extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "Login",
+                      "Se connecter",
                       style: TextStyle(fontSize: 25, color: Colors.white),
                     ),
                   ))),
@@ -84,7 +84,7 @@ class Buttonregister extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "Register now",
+                      "Inscrivez vous",
                       style: TextStyle(fontSize: 25, color: Colors.white),
                     ),
                   ))),

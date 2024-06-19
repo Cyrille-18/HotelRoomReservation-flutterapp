@@ -2,14 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:hotelroomreservation/Provider/provider.dart';
 import 'package:hotelroomreservation/profile/cubit/settings_cubit.dart';
 import 'package:hotelroomreservation/profile/widgets/app_info_widget.dart';
 import 'package:hotelroomreservation/profile/widgets/help_and_support_widget.dart';
+import 'package:hotelroomreservation/screens/profile.page.dart';
 import 'package:hotelroomreservation/view/NavigationBar.view.dart';
+import 'package:hotelroomreservation/view/login.view.dart';
+import 'package:hotelroomreservation/view/my_list_title.dart';
 import 'package:provider/provider.dart';
 
 class StettingsPage extends StatelessWidget {
+  /*final void Function()? onProfileTap;
+  final void Function()? onSignOut;*/
   const StettingsPage({super.key});
 
   @override
@@ -22,20 +28,27 @@ class StettingsPage extends StatelessWidget {
           Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
         return Column(
           children: [
-            ListTile(
-              leading: const Icon(Icons.dark_mode),
-              title: const Text("Dark theme"),
-              trailing: Switch(
-                  value: notifier.isDark,
-                  onChanged: (value) => notifier.changeTheme()),
+            const DrawerHeader(
+              child: Icon(
+                Icons.person,
+                /*color: Colors.black,*/
+                size: 64,
+              ),
             ),
-            ListTile(
-              title: const Text('Privacy Settings'),
-              subtitle: const Text('Consult privacy policies'),
+            MyListTitle(
+              icon: Icons.info_sharp,
+              text: 'information du profil',
               onTap: () {
-// TODO(profile): Navigate to privacy settings screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
               },
-              trailing: const Icon(Icons.privacy_tip),
+            ),
+            const ListTile(
+              title: Text('Profile preferences'),
+              subtitle: Text('Configure your profile preferences'),
+              trailing: Icon(Icons.chevron_right),
             ),
             ListTile(
               title: const Text('Help and Support'),
@@ -50,11 +63,6 @@ class StettingsPage extends StatelessWidget {
               },
               trailing: const Icon(Icons.help),
             ),
-            const ListTile(
-              title: Text('Profile preferences'),
-              subtitle: Text('Configure your profile preferences'),
-              trailing: Icon(Icons.chevron_right),
-            ),
             ListTile(
               title: const Text('App info'),
               subtitle: const Text('Info and credits'),
@@ -68,6 +76,38 @@ class StettingsPage extends StatelessWidget {
               },
               trailing: const Icon(Icons.info),
             ),
+            ListTile(
+              title: const Text('Privacy Settings'),
+              subtitle: const Text('Consult privacy policies'),
+              onTap: () {
+// TODO(profile): Navigate to privacy settings screen
+              },
+              trailing: const Icon(Icons.privacy_tip),
+            ),
+            ListTile(
+              leading: const Icon(Icons.dark_mode),
+              title: const Text("Dark theme"),
+              trailing: Switch(
+                  value: notifier.isDark,
+                  onChanged: (value) => notifier.changeTheme()),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            MyListTitle(
+              icon: Icons.logout,
+              text: 'logout',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginView()),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 3.2,
+            ),
+            const navigationbar()
           ],
         );
       }),
