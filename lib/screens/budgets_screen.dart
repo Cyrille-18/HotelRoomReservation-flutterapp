@@ -103,7 +103,7 @@ class _DisplayState extends State<Display> {
                     const SizedBox(height: 10.0),
                     Text(
                       // ignore: prefer_interpolation_to_compose_strings
-                      _balance + " fcfa",
+                      _balance + " FCFA",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30.0,
