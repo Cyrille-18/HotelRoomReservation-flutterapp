@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotelroomreservation/screens/room_details_screen.dart';
+import 'package:intl/intl.dart';
 import 'package:hotelroomreservation/utils/navigationbar.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import '../constantes.dart';
@@ -15,6 +15,14 @@ class ReservationForm extends StatefulWidget {
 
 class _ReservationFormState extends State<ReservationForm> {
   String _selectedGender = 'Homme';
+  late DateTime _selectedDate;
+  final DateFormat _dateFormat = DateFormat('dd/MM/yyyy');
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedDate = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +46,12 @@ class _ReservationFormState extends State<ReservationForm> {
         selectedIndex: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0), // Ensure padding around the form
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Form(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 25,
-                  ),
                   Row(
                     children: [
                       Expanded(
@@ -79,7 +84,7 @@ class _ReservationFormState extends State<ReservationForm> {
                     ],
                   ),
                   SizedBox(
-                    height: 35.0, // Increased space
+                    height: 25.0,
                   ),
                   Row(
                     children: [
@@ -98,7 +103,7 @@ class _ReservationFormState extends State<ReservationForm> {
                     ],
                   ),
                   SizedBox(
-                    height: 35.0,
+                    height: 25.0,
                   ),
                   Row(
                     children: [
@@ -129,7 +134,7 @@ class _ReservationFormState extends State<ReservationForm> {
                     ],
                   ),
                   SizedBox(
-                    height: 40.0,
+                    height: 30.0,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +156,7 @@ class _ReservationFormState extends State<ReservationForm> {
                               ),
                             ),
                             SizedBox(
-                              height: 40.0, // Increased space
+                              height: 30.0,
                             ),
                             TextField(
                               expands: false,
@@ -175,7 +180,7 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                       Container(
                         width: 200,
-                        height: 150, // Hauteur des deux champs
+                        height: 150,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
@@ -187,14 +192,49 @@ class _ReservationFormState extends State<ReservationForm> {
                     ],
                   ),
                   SizedBox(
-                    height: 38.0,
+                    height: 25.0,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Date de réservation",
+                            prefixIcon: Icon(Icons.calendar_today),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          readOnly: true,
+                          onTap: () async {
+                            final DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: _selectedDate,
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(DateTime.now().year + 1),
+                            );
+                            if (pickedDate != null &&
+                                pickedDate != _selectedDate) {
+                              setState(() {
+                                _selectedDate = pickedDate;
+                              });
+                            }
+                          },
+                          controller: TextEditingController(
+                              text: _dateFormat.format(_selectedDate)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 18.0,
                   ),
                   Row(
                     children: [
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            // validation du formualaire
+                            // validation du formulaire
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,

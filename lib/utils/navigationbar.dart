@@ -70,7 +70,7 @@ class _barredenavigationState extends State<barredenavigation> {
               text: 'Accueil',
             ),
             GButton(
-              icon: Icons.event_busy,
+              icon: Icons.event,
               text: 'Mes Réservations',
             ),
             GButton(
