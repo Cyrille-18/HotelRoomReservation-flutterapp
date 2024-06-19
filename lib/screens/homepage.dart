@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:hotelroomreservation/view/NavigationBar.view.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/models/reservationclass.dart';
 import 'package:hotelroomreservation/utils/navigationbar.dart';
 import 'roomcard.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -17,6 +20,7 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -91,6 +95,7 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       bottomNavigationBar: const barredenavigation(selectedIndex: 0),
+
     );
   }
 }

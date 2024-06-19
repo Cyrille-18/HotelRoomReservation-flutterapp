@@ -9,7 +9,7 @@ import 'package:hotelroomreservation/utils/global.colors.dart';
 import 'package:hotelroomreservation/view/login.view.dart';
 
 class SplashView extends StatefulWidget {
-  const SplashView({Key? key}) : super(key: key);
+  const SplashView({super.key});
 
   @override
   State<SplashView> createState() => _SplashViewState();
@@ -19,7 +19,8 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2), () {
-      Get.to( const LoginView());
+      /*Get.to(const LoginView());*/
+      Get.off(() => const LoginView());
     });
     return Scaffold(
         backgroundColor: GlobalColors.maincolor,

@@ -41,13 +41,31 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
-                Text(
+                const SizedBox(height: 100),
+                /*Text(
                   'Enter your login account',
                   style: TextStyle(
                     color: GlobalColors.textColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
+                  ),
+                ),*/
+                /*const Center(
+                  child: Icon(
+                    Icons.person,
+                    size: 72,
+                  ),
+                ),*/
+                const Center(
+                  child: CircleAvatar(
+                    radius: 50, // Ajuste le rayon selon les besoins
+                    backgroundColor:
+                        Colors.black, // La couleur de fond du cercle
+                    child: Icon(
+                      Icons.person,
+                      size: 72, // La taille de l'icône à l'intérieur
+                      color: Colors.white, // La couleur de l'icône
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -63,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 PassFromGlobal(
                   controller: passwordController,
-                  text: 'Password',
+                  text: 'Mot de passe',
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(
