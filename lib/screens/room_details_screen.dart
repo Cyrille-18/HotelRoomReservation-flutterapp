@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
-
+import 'package:hotelroomreservation/screens/homepage.dart';
+import 'package:hotelroomreservation/screens/reservation_screen.dart';
 import '../utils/navigationbar.dart';
-
 import '../utils/listdecouleur.dart';
 import '../utils/room_image.dart';
 import 'package:hive/hive.dart';
@@ -25,8 +25,7 @@ class _DetailRoomState extends State<DetailRoom> {
   void initState() {
     super.initState();
     favorisBox = Hive.box('favoris');
-    isFavorite = favorisBox.get(widget.room.title) ??
-        false; // widget.room.title utilisé comme clé
+    isFavorite = favorisBox.get(widget.room.title) ?? false;
   }
 
   void toggleFavorite(BuildContext context) {
@@ -34,7 +33,6 @@ class _DetailRoomState extends State<DetailRoom> {
       isFavorite = !isFavorite;
       favorisBox.put(widget.room.title, isFavorite);
 
-      // barre de message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -71,7 +69,11 @@ class _DetailRoomState extends State<DetailRoom> {
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const Homepage()),
+            (route) => false,
+          );
         },
       ),
       centerTitle: false,
@@ -80,7 +82,11 @@ class _DetailRoomState extends State<DetailRoom> {
         style: Theme.of(context).textTheme.bodyMedium,
       ),
       actions: <Widget>[
-        IconButton(onPressed: () {}, icon: Icon(Icons.card_travel_sharp))
+        IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.card_travel_sharp))
       ],
     );
   }
@@ -174,7 +180,14 @@ class detailsbody extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.black, borderRadius: BorderRadius.circular(30)),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReservationForm(room: room),
+                  ),
+                );
+              },
               child: Row(
                 children: <Widget>[
                   SizedBox(

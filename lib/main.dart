@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
+import 'package:hotelroomreservation/screens/reservation_screen.dart';
 import 'package:hotelroomreservation/view/splash.view.dart';
 
 Future<void> main() async {

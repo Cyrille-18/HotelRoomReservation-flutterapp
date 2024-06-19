@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/favorites.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
 

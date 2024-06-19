@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/constantes.dart';
-import 'package:hotelroomreservation/models/room.dart';
-import 'package:hotelroomreservation/screens/room_details_screen.dart';
-import 'package:hotelroomreservation/screens/roomcard.dart';
 import 'package:hotelroomreservation/utils/navigationbar.dart';
-import 'package:hive/hive.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({super.key});
