@@ -94,7 +94,7 @@ class _DisplayState extends State<Display> {
                   children: [
                     const SizedBox(height: 20.0),
                     const Text(
-                      'Total Balance',
+                      'Budget Total',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
@@ -141,14 +141,14 @@ class _DisplayState extends State<Display> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Enter your Balance'),
+          title: const Text('Enter votre Budget'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: ' balance',
+                  hintText: ' Montant',
                 ),
                 onChanged: (value) {
                   setState(() {
@@ -163,13 +163,13 @@ class _DisplayState extends State<Display> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cancel'),
+              child: const Text('Annuler'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Save'),
+              child: const Text('Sauvegarder'),
             ),
           ],
         );

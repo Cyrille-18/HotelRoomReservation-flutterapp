@@ -16,8 +16,8 @@ List<Room> rooms = [
   Room(
     id: 1,
     price: 35000,
-    title: "Chambre classique",
-    image: "assets/images/Chambre1.jpg",
+    title: "Chambre Simple",
+    image: "assets/images/cbre1.jpg",
     description:
         "Découvrez notre chambre classique, offrant confort et élégance avec un lit douillet, une salle de bain moderne et des équipements essentiels. Profitez d'un séjour agréable à un excellent rapport qualité-prix. Réservez dès maintenant pour une escapade reposante.",
   ),

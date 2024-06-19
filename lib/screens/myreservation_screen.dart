@@ -11,6 +11,7 @@ class MyReservation extends StatelessWidget {
       : reservations = reservations ??
             [], // Utilisation de la liste fournie ou une liste vide par défaut
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +87,7 @@ class MyReservation extends StatelessWidget {
                                 Text('Prix: ${reservation.room.price} FCFA'),
                               ],
                             ),
-                            leading: Image.network(
+                            leading: Image.asset(
                               reservation.room.image,
                               width: 50,
                               height: 50,
