@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:hotelroomreservation/constantes.dart';
-import 'package:hotelroomreservation/models/reservationclass.dart';
-import 'package:hotelroomreservation/screens/homepage.dart';
-import 'package:hotelroomreservation/screens/settings.page.dart';
-import 'package:hotelroomreservation/view/signup.view.dart';
 import 'package:hotelroomreservation/view/splash.view.dart';
 import 'package:provider/provider.dart';
 
