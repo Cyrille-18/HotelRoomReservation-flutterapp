@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:hotelroomreservation/screens/favorites.dart';
+import 'package:hotelroomreservation/screens/myreservation_screen.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
 
 class barredenavigation extends StatefulWidget {
@@ -41,7 +41,7 @@ class _barredenavigationState extends State<barredenavigation> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => Favorites(),
+            builder: (context) => Myreservation(),
           ),
           (route) => false,
         );
