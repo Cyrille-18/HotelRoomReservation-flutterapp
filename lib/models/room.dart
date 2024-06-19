@@ -19,22 +19,21 @@ List<Room> rooms = [
     title: "Chambre classique",
     image: "assets/images/Chambre1.jpg",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+        "Découvrez notre chambre classique, offrant confort et élégance avec un lit douillet, une salle de bain moderne et des équipements essentiels. Profitez d'un séjour agréable à un excellent rapport qualité-prix. Réservez dès maintenant pour une escapade reposante.",
   ),
   Room(
-    id: 2,
-    price: 68000,
-    title: "Chambre luxieuse parisienne",
-    image: "assets/images/chbre2.jpg",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  ),
+      id: 2,
+      price: 68000,
+      title: "Chambre luxieuse parisienne",
+      image: "assets/images/chbre2.jpg",
+      description:
+          "Découvrez notre chambre luxueuse parisienne, un mélange parfait de raffinement et de confort. Profitez d'un lit king-size, d'une salle de bain en marbre, et d'une vue imprenable sur les toits de Paris. Réservez dès maintenant pour une expérience inoubliable au cœur de la ville lumière."),
   Room(
     id: 9,
     price: 145000,
     title: "Royal luxe ",
     image: "assets/images/chre7.jpg",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+        "Découvrez notre chambre Royal Luxe, une oasis d'élégance avec un lit king-size, une salle de bain en marbre somptueuse, et une vue panoramique exceptionnelle. Profitez de services exclusifs et d'équipements haut de gamme pour un séjour royal. Réservez dès maintenant pour une expérience majestueuse.",
   ),
 ];

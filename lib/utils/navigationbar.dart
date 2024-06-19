@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hotelroomreservation/models/reservationclass.dart';
+import 'package:hotelroomreservation/screens/budgets_screen.dart';
 import 'package:hotelroomreservation/screens/myreservation_screen.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
 
@@ -48,6 +49,13 @@ class _barredenavigationState extends State<barredenavigation> {
               reservations: widget.reservations,
             ),
           ),
+          (route) => false,
+        );
+        break;
+      case 2:
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const Display()),
           (route) => false,
         );
         break;
