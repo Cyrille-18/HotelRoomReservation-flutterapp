@@ -1,13 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/favorites.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
 
 class barredenavigation extends StatefulWidget {
   final int selectedIndex;
 
-  const barredenavigation({Key? key, required this.selectedIndex})
-      : super(key: key);
+  const barredenavigation({
+    Key? key,
+    required this.selectedIndex,
+  }) : super(key: key);
 
   @override
   State<barredenavigation> createState() => _barredenavigationState();
@@ -37,7 +41,9 @@ class _barredenavigationState extends State<barredenavigation> {
       case 1:
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const favorites()),
+          MaterialPageRoute(
+            builder: (context) => Favorites(),
+          ),
           (route) => false,
         );
         break;
@@ -65,11 +71,11 @@ class _barredenavigationState extends State<barredenavigation> {
               text: 'Accueil',
             ),
             GButton(
-              icon: Icons.favorite_border,
-              text: 'Favoris',
+              icon: Icons.event_busy,
+              text: 'Mes Réservations',
             ),
             GButton(
-              icon: Icons.search,
+              icon: Icons.monetization_on_outlined,
               text: 'Budgets',
             ),
             GButton(

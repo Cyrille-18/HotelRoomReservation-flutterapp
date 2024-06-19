@@ -1,6 +1,4 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/room_details_screen.dart';
@@ -27,12 +25,10 @@ class RoomCard extends StatelessWidget {
           horizontal: kDefaultPadding,
           vertical: kDefaultPadding / 2,
         ),
-        // color: Colors.blueAccent,
         height: 160,
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: <Widget>[
-            //arriere-plan
             Container(
               height: 135,
               decoration: BoxDecoration(
@@ -48,23 +44,22 @@ class RoomCard extends StatelessWidget {
                 ),
               ),
             ),
-            // image de la chambre
             Positioned(
-                top: 25,
-                right: 0,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(22),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                    height: 135,
-                    width: 230,
-                    child: Image.asset(
-                      room.image,
-                      fit: BoxFit.cover,
-                    ),
+              top: 25,
+              right: 0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(22),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  height: 135,
+                  width: 230,
+                  child: Image.asset(
+                    room.image,
+                    fit: BoxFit.cover,
                   ),
-                )),
-            //Nom et Description de la chambre
+                ),
+              ),
+            ),
             Positioned(
               bottom: 0,
               left: 0,
@@ -86,8 +81,8 @@ class RoomCard extends StatelessWidget {
                     Spacer(),
                     Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: kDefaultPadding * 1.5, //30 padding
-                        vertical: kDefaultPadding / 4, // 5 en haut 5 en bas
+                        horizontal: kDefaultPadding * 1.5,
+                        vertical: kDefaultPadding / 4,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.black,
@@ -102,7 +97,7 @@ class RoomCard extends StatelessWidget {
                             .labelLarge
                             ?.copyWith(color: Colors.white),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -1,18 +1,54 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 
-import '../utils/colordot.dart';
 import '../utils/navigationbar.dart';
 
 import '../utils/listdecouleur.dart';
 import '../utils/room_image.dart';
+import 'package:hive/hive.dart';
 
-class DetailRoom extends StatelessWidget {
+class DetailRoom extends StatefulWidget {
   final Room room;
   final Key? key;
   const DetailRoom({this.key, required this.room});
+
+  @override
+  _DetailRoomState createState() => _DetailRoomState();
+}
+
+class _DetailRoomState extends State<DetailRoom> {
+  late Box favorisBox;
+  late bool isFavorite;
+
+  @override
+  void initState() {
+    super.initState();
+    favorisBox = Hive.box('favoris');
+    isFavorite = favorisBox.get(widget.room.title) ??
+        false; // widget.room.title utilisé comme clé
+  }
+
+  void toggleFavorite(BuildContext context) {
+    setState(() {
+      isFavorite = !isFavorite;
+      favorisBox.put(widget.room.title, isFavorite);
+
+      // barre de message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            isFavorite
+                ? 'Chambre ajoutée aux favoris'
+                : 'Chambre retirée des favoris',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 1),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +56,9 @@ class DetailRoom extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       appBar: appbardetails(context),
       body: detailsbody(
-        room: room,
+        room: widget.room,
+        isFavorite: isFavorite,
+        onFavoriteToggle: () => toggleFavorite(context),
       ),
       bottomNavigationBar: barredenavigation(selectedIndex: 0),
     );
@@ -51,8 +89,14 @@ class DetailRoom extends StatelessWidget {
 class detailsbody extends StatelessWidget {
   final Room room;
   final Key? key;
+  final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
 
-  const detailsbody({required this.room, this.key});
+  const detailsbody(
+      {required this.room,
+      this.key,
+      required this.isFavorite,
+      required this.onFavoriteToggle});
 
   @override
   Widget build(BuildContext context) {
@@ -84,13 +128,26 @@ class detailsbody extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                Text(
-                  "${room.price} FCFA",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: kSecondaryColor,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${room.price} FCFA",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: kSecondaryColor,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: onFavoriteToggle,
+                      child: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorite ? Colors.red : Colors.grey,
+                        size: 40,
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
