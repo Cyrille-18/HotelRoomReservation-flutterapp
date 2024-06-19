@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hotelroomreservation/models/reservationclass.dart';
+import 'package:hotelroomreservation/screens/myreservation_screen.dart';
 import 'package:intl/intl.dart';
-import 'package:hotelroomreservation/utils/navigationbar.dart';
 import 'package:hotelroomreservation/models/room.dart';
-import '../constantes.dart';
+import 'package:hotelroomreservation/utils/navigationbar.dart';
+import 'package:hotelroomreservation/constantes.dart';
 
 class ReservationForm extends StatefulWidget {
   final Room room;
+  final List<Reservation> reservations;
 
-  const ReservationForm({Key? key, required this.room}) : super(key: key);
+  const ReservationForm(
+      {Key? key, required this.room, required this.reservations})
+      : super(key: key);
 
   @override
   State<ReservationForm> createState() => _ReservationFormState();
@@ -17,11 +22,36 @@ class _ReservationFormState extends State<ReservationForm> {
   String _selectedGender = 'Homme';
   late DateTime _selectedDate;
   final DateFormat _dateFormat = DateFormat('dd/MM/yyyy');
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _surnameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _selectedDate = DateTime.now();
+  }
+
+  void _submitReservation() {
+    final newReservation = Reservation(
+      name: _nameController.text,
+      surname: _surnameController.text,
+      email: _emailController.text,
+      gender: _selectedGender,
+      reservationDate: _selectedDate,
+      room: widget.room,
+    );
+
+    setState(() {
+      widget.reservations.add(newReservation);
+    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyReservation(reservations: widget.reservations),
+      ),
+    );
   }
 
   @override
@@ -42,9 +72,7 @@ class _ReservationFormState extends State<ReservationForm> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
-      bottomNavigationBar: barredenavigation(
-        selectedIndex: 0,
-      ),
+      bottomNavigationBar: barredenavigation(selectedIndex: 0),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -56,7 +84,7 @@ class _ReservationFormState extends State<ReservationForm> {
                     children: [
                       Expanded(
                         child: TextField(
-                          expands: false,
+                          controller: _nameController,
                           decoration: InputDecoration(
                             labelText: "Nom",
                             prefixIcon: Icon(Icons.person),
@@ -66,12 +94,10 @@ class _ReservationFormState extends State<ReservationForm> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 16.0,
-                      ),
+                      SizedBox(width: 16.0),
                       Expanded(
                         child: TextField(
-                          expands: false,
+                          controller: _surnameController,
                           decoration: InputDecoration(
                             labelText: "Prenoms",
                             prefixIcon: Icon(Icons.person),
@@ -83,14 +109,12 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
+                  SizedBox(height: 25.0),
                   Row(
                     children: [
                       Expanded(
                         child: TextField(
-                          expands: false,
+                          controller: _emailController,
                           decoration: InputDecoration(
                             labelText: "Email",
                             prefixIcon: Icon(Icons.mail),
@@ -102,9 +126,7 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
+                  SizedBox(height: 25.0),
                   Row(
                     children: [
                       Expanded(
@@ -133,9 +155,7 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
+                  SizedBox(height: 30.0),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -155,9 +175,7 @@ class _ReservationFormState extends State<ReservationForm> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 30.0,
-                            ),
+                            SizedBox(height: 30.0),
                             TextField(
                               expands: false,
                               enabled: false,
@@ -175,9 +193,7 @@ class _ReservationFormState extends State<ReservationForm> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
+                      SizedBox(width: 10.0),
                       Container(
                         width: 200,
                         height: 150,
@@ -191,9 +207,7 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
+                  SizedBox(height: 25.0),
                   Row(
                     children: [
                       Expanded(
@@ -226,16 +240,12 @@ class _ReservationFormState extends State<ReservationForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 18.0,
-                  ),
+                  SizedBox(height: 18.0),
                   Row(
                     children: [
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: () {
-                            // validation du formulaire
-                          },
+                          onPressed: _submitReservation,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
                             padding: EdgeInsets.symmetric(vertical: 16.0),

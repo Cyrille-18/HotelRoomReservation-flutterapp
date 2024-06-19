@@ -1,12 +1,10 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hotelroomreservation/constantes.dart';
+import 'package:hotelroomreservation/models/reservationclass.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
-import 'package:hotelroomreservation/screens/reservation_screen.dart';
 import 'package:hotelroomreservation/view/splash.view.dart';
 
 Future<void> main() async {
@@ -21,16 +19,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Reservation> reservations = [];
+
     return GetMaterialApp(
       title: 'Hotel Transilvani',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
         primaryColor: kPrimaryColor,
-        // accentColor : kPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: Homepage(),
     );
   }
 }

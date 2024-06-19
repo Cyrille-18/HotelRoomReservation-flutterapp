@@ -1,9 +1,8 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
-
-import '../utils/navigationbar.dart';
+import 'package:hotelroomreservation/models/reservationclass.dart';
+import 'package:hotelroomreservation/utils/navigationbar.dart';
 import 'roomcard.dart';
 
 class Homepage extends StatefulWidget {
@@ -14,32 +13,34 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final List<Reservation> reservations = []; // Initialize reservations list
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            style: TextStyle(
-              color: Colors.white,
-            ),
-            'Hôtel Transilvani',
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Hôtel Transilvani',
+          style: TextStyle(
+            color: Colors.white,
           ),
-          backgroundColor: kPrimaryColor, // Color.fromARGB(19, 17, 2, 2),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_outlined),
-              color: Colors.white,
-              iconSize: 25,
-            )
-          ]),
+        ),
+        backgroundColor: kPrimaryColor,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_outlined),
+            color: Colors.white,
+            iconSize: 25,
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              //color: Color.fromRGBO(201, 236, 243, 1),
               padding: EdgeInsets.fromLTRB(10, 25, 10, 10),
               child: Column(
                 children: [
@@ -51,41 +52,41 @@ class _HomepageState extends State<Homepage> {
                           child: Material(
                             child: TextField(
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(
-                                    Icons.search,
-                                    color: Colors.black26,
-                                  ),
-                                  hintText: 'Rechercher',
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12.0)),
-                                      borderSide:
-                                          BorderSide(color: kPrimaryColor)),
-                                  border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(12.0)),
-                                    borderSide: BorderSide(color: Colors.black),
-                                  )),
+                                prefixIcon: Icon(
+                                  Icons.search,
+                                  color: Colors.black26,
+                                ),
+                                hintText: 'Rechercher',
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12.0)),
+                                  borderSide: BorderSide(color: kPrimaryColor),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12.0)),
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
+                  SizedBox(height: 8),
                   Column(
-                    // Wrap RoomCards in a Column
-                    children:
-                        rooms.map((room) => RoomCard(room: room)).toList(),
+                    children: rooms
+                        .map((room) => RoomCard(
+                              room: room,
+                              reservations: reservations,
+                            ))
+                        .toList(),
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
+            SizedBox(height: 15),
           ],
         ),
       ),

@@ -3,6 +3,8 @@ import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/homepage.dart';
 import 'package:hotelroomreservation/screens/reservation_screen.dart';
+
+import '../models/reservationclass.dart';
 import '../utils/navigationbar.dart';
 import '../utils/listdecouleur.dart';
 import '../utils/room_image.dart';
@@ -10,8 +12,9 @@ import 'package:hive/hive.dart';
 
 class DetailRoom extends StatefulWidget {
   final Room room;
+  final List<Reservation> reservations;
   final Key? key;
-  const DetailRoom({this.key, required this.room});
+  const DetailRoom({this.key, required this.room, required this.reservations});
 
   @override
   _DetailRoomState createState() => _DetailRoomState();
@@ -57,6 +60,7 @@ class _DetailRoomState extends State<DetailRoom> {
         room: widget.room,
         isFavorite: isFavorite,
         onFavoriteToggle: () => toggleFavorite(context),
+        reservations: widget.reservations,
       ),
       bottomNavigationBar: barredenavigation(selectedIndex: 0),
     );
@@ -71,7 +75,7 @@ class _DetailRoomState extends State<DetailRoom> {
         onPressed: () {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const Homepage()),
+            MaterialPageRoute(builder: (context) => Homepage()),
             (route) => false,
           );
         },
@@ -94,20 +98,22 @@ class _DetailRoomState extends State<DetailRoom> {
 
 class detailsbody extends StatelessWidget {
   final Room room;
+  final List<Reservation> reservations;
   final Key? key;
   final bool isFavorite;
   final VoidCallback onFavoriteToggle;
 
-  const detailsbody(
-      {required this.room,
-      this.key,
-      required this.isFavorite,
-      required this.onFavoriteToggle});
+  const detailsbody({
+    required this.room,
+    required this.reservations,
+    this.key,
+    required this.isFavorite,
+    required this.onFavoriteToggle,
+  });
 
   @override
   Widget build(BuildContext context) {
-    Size size =
-        MediaQuery.of(context).size; // donne la taille et la largeur total
+    Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,11 +122,12 @@ class detailsbody extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
             decoration: BoxDecoration(
-                color: kBackgroundColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                )),
+              color: kBackgroundColor,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(50),
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -184,7 +191,10 @@ class detailsbody extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReservationForm(room: room),
+                    builder: (context) => ReservationForm(
+                      room: room,
+                      reservations: reservations,
+                    ),
                   ),
                 );
               },

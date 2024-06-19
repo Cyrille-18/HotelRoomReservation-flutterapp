@@ -3,10 +3,13 @@ import 'package:hotelroomreservation/constantes.dart';
 import 'package:hotelroomreservation/models/room.dart';
 import 'package:hotelroomreservation/screens/room_details_screen.dart';
 
+import '../models/reservationclass.dart';
+
 class RoomCard extends StatelessWidget {
   final Room room;
+  final List<Reservation> reservations;
   final Key? key;
-  const RoomCard({required this.room, this.key});
+  const RoomCard({required this.room, required this.reservations, this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,10 @@ class RoomCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailRoom(room: room),
+            builder: (context) => DetailRoom(
+              room: room,
+              reservations: reservations,
+            ),
           ),
         );
       },
